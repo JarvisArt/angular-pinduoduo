@@ -36,7 +36,6 @@ export class AppComponent {
     { imgUrl: 'https://hbimg.huabanimg.com/9d48c592d1d77be341dab0fa03fc1849c717ae5e10151-RY8nM9_fw658/format/webp', link: '', caption: '' },
     { imgUrl: 'https://hbimg.huabanimg.com/72ae4108743b436e1a944c0f9f4d9f949168b51a54be-lA8Kar_fw658/format/webp', link: '', caption: '' },
   ];
-  username = '';
 
   handleTabSelected(topMenu: TopMenu) {
     const colors = ['red', 'blue', 'black'];
