@@ -10,4 +10,9 @@
   <div>这是一个div</div>
 </app-scrollab-tab>
 <app-image-slider [sliders]="imageSliders"></app-image-slider>
-<app-horizontal-grid></app-horizontal-grid>
+<app-horizontal-grid>
+  <span appGridItem *ngFor="let item of channels">
+    <img [src]="item.icon" alt="" [appGridItemImage]="'2rem'" [fitMode]="'cover'" />
+    <span appGridItemTitle="0.6rem">{{item.title}}</span>
+  </span>
+</app-horizontal-grid>
