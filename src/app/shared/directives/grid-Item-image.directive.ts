@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Renderer2, Input, OnInit } from '@angular/core';
+import { Directive, ElementRef, Renderer2, Input, OnInit, HostListener } from '@angular/core';
 
 @Directive({
   selector: '[appGridItemImage]',
@@ -14,5 +14,10 @@ export class GridItemImageDirective implements OnInit {
     this.rd2.setStyle(this.elr.nativeElement, 'width', this.appGridItemImage);
     this.rd2.setStyle(this.elr.nativeElement, 'height', this.appGridItemImage);
     this.rd2.setStyle(this.elr.nativeElement, 'object-fit', this.fitMode);
+  }
+
+  @HostListener('click', ['$event.target'])
+  handleClick(ev) {
+    console.log(ev)
   }
 }
