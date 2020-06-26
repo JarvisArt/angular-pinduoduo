@@ -1,0 +1,11 @@
+<app-scrollab-tab
+  [menus]="topMenus"
+  [backgroundColor]="'#fff'"
+  [indicatorColor]="'red'"
+  [titleColor]="'#3f3f3f'"
+  [titleActiveColor]="'red'"
+  indicatorColor="yellow"
+  (tabSelected)="handleTabSelected($event)"
+>
+</app-scrollab-tab>
+<router-outlet></router-outlet>

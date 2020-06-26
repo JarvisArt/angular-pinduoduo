@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 export interface TopMenu {
+  id: number,
   title: string,
   link: string
 }
@@ -13,6 +14,7 @@ export interface TopMenu {
 export class ScrollabTabComponent implements OnInit {
 
   selectIndex = -1;
+  @Input() selectedTabLink: string;
   @Input() menus: TopMenu[] = [];
   @Input() backgroundColor = '#fff';
   @Input() titleActiveColor = 'yellow';
