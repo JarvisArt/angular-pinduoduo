@@ -8,6 +8,7 @@ import {
   HomeGrandComponent,
   HomeAuxComponent
 } from './components';
+import { HomeService } from './services/home.service';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,9 @@ import {
     HomeDetailComponent,
     HomeGrandComponent,
     HomeAuxComponent
+  ],
+  providers: [
+    HomeService
   ],
   imports: [
     SharedModule,
