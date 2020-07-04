@@ -21,7 +21,13 @@ export class HomeDetailComponent implements OnInit {
       this.selectedTabLink = params.get('tabLink');
       this.cd.markForCheck();
     })
-    this.channels = this.service.getChannel();
-    this.imageSliders = this.service.getImageSliders();
+    this.service.getChannel().subscribe(channels => {
+      this.channels = channels
+      this.cd.markForCheck();
+    });
+    this.service.getImageSliders().subscribe(banners => {
+      this.imageSliders = banners
+      this.cd.markForCheck();
+    });
   }
 }

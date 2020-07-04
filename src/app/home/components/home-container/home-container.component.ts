@@ -21,10 +21,12 @@ export class HomeContainerComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    console.log('app.component', this.imgSlider);
+
   }
 
   ngOnInit() {
-    this.topMenus = this.service.getTabs();
+    this.service.getTabs().subscribe(tabs => {
+      this.topMenus = tabs
+    });
   }
 }
