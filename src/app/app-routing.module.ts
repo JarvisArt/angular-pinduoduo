@@ -6,6 +6,7 @@ import {
   HomeDetailComponent,
   HomeGrandComponent,
   HomeAuxComponent,
+  ParentComponent,
 } from './home';
 
 const routes: Routes = [
@@ -40,6 +41,11 @@ const routes: Routes = [
       }
     ]
   },
+  {
+    path: 'change-detection',
+    pathMatch: 'full',
+    component: ParentComponent
+  }
   // { path: 'path', component: FeatureComponent },
   // { path: '**', component: PageNotFoundComponent },
 ];

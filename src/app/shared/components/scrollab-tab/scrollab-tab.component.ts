@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
 export interface TopMenu {
   id: number,
@@ -9,7 +9,8 @@ export interface TopMenu {
 @Component({
   selector: 'app-scrollab-tab',
   templateUrl: './scrollab-tab.component.html',
-  styleUrls: ['./scrollab-tab.component.css']
+  styleUrls: ['./scrollab-tab.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ScrollabTabComponent implements OnInit {
 

@@ -6,7 +6,9 @@ import {
   HomeContainerComponent,
   HomeDetailComponent,
   HomeGrandComponent,
-  HomeAuxComponent
+  HomeAuxComponent,
+  ParentComponent,
+  ChildComponent
 } from './components';
 import { HomeService } from './services/home.service';
 
@@ -15,7 +17,9 @@ import { HomeService } from './services/home.service';
     HomeContainerComponent,
     HomeDetailComponent,
     HomeGrandComponent,
-    HomeAuxComponent
+    HomeAuxComponent,
+    ParentComponent,
+    ChildComponent
   ],
   providers: [
     HomeService

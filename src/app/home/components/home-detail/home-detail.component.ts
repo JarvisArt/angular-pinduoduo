@@ -1,16 +1,17 @@
 import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ImageSlider, Channel } from '../../../shared/components'
 import { HomeService } from './../../services/home.service';
 
 @Component({
   selector: 'app-home-detail',
   templateUrl: './home-detail.component.html',
-  styleUrls: ['./home-detail.component.css']
+  styleUrls: ['./home-detail.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeDetailComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private service: HomeService) { }
+  constructor(private route: ActivatedRoute, private service: HomeService, private cd: ChangeDetectorRef) { }
   selectedTabLink;
   imageSliders: ImageSlider[] = [];
   channels: Channel[] = [];
@@ -18,6 +19,7 @@ export class HomeDetailComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.selectedTabLink = params.get('tabLink');
+      this.cd.markForCheck();
     })
     this.channels = this.service.getChannel();
     this.imageSliders = this.service.getImageSliders();
