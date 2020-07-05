@@ -8,7 +8,9 @@ import {
   CountDownComponent,
   FooterComponent,
   VerticalGridComponent,
-  ProductCardComponent
+  ProductCardComponent,
+  ProductTileComponent,
+  BackButtonComponent,
 } from './components';
 import {
   GridItemDirective,
@@ -18,6 +20,7 @@ import {
   AvatarDirective
 } from './directives'
 import { AgoPipe } from './pipes/ago.pipe';
+import { DialogModule } from '../dialog';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,8 @@ import { AgoPipe } from './pipes/ago.pipe';
     FooterComponent,
     VerticalGridComponent,
     ProductCardComponent,
+    ProductTileComponent,
+    BackButtonComponent,
     GridItemDirective,
     GridItemImageDirective,
     GridItemTitleDirective,
@@ -42,6 +47,7 @@ import { AgoPipe } from './pipes/ago.pipe';
   exports: [
     CommonModule,
     FormsModule,
+    DialogModule,
     ScrollabTabComponent,
     ImageSliderComponent,
     HorizontalGridComponent,
@@ -49,6 +55,8 @@ import { AgoPipe } from './pipes/ago.pipe';
     FooterComponent,
     VerticalGridComponent,
     ProductCardComponent,
+    ProductTileComponent,
+    BackButtonComponent,
     GridItemDirective,
     GridItemImageDirective,
     GridItemTitleDirective,
