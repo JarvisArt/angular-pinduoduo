@@ -1,8 +1,6 @@
-import { environment } from './../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TopMenu, Channel, ImageSlider } from './../../shared/components';
-import Mock from 'mockjs';
 
 @Injectable()
 export class HomeService {

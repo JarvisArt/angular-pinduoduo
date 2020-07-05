@@ -1,5 +1,7 @@
 import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 import { ImageSlider, Channel } from '../../../shared/components'
 import { HomeService } from './../../services/home.service';
 
@@ -9,25 +11,30 @@ import { HomeService } from './../../services/home.service';
   styleUrls: ['./home-detail.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HomeDetailComponent implements OnInit {
+export class HomeDetailComponent implements OnInit, OnDestroy {
 
   constructor(private route: ActivatedRoute, private service: HomeService, private cd: ChangeDetectorRef) { }
-  selectedTabLink;
-  imageSliders: ImageSlider[] = [];
-  channels: Channel[] = [];
+  selectedTabLink$: Observable<string>;
+  imageSliders$: Observable<ImageSlider[]>;
+  channels$: Observable<Channel[]>;
+  sub: Subscription;
 
   ngOnInit() {
-    this.route.paramMap.subscribe(params => {
-      this.selectedTabLink = params.get('tabLink');
-      this.cd.markForCheck();
+    this.selectedTabLink$ = this.route.paramMap.pipe(
+      map(params => params.get('tabLink')),
+      tap(params => {
+        console.log(params)
+      })
+    );
+    this.sub = this.route.queryParamMap.subscribe(params => {
+      console.log('查询参数', params)
     })
-    this.service.getChannel().subscribe(channels => {
-      this.channels = channels
-      this.cd.markForCheck();
-    });
-    this.service.getImageSliders().subscribe(banners => {
-      this.imageSliders = banners
-      this.cd.markForCheck();
-    });
+    this.imageSliders$ = this.service.getImageSliders();
+    this.channels$ = this.service.getChannel();
+  }
+
+  ngOnDestroy(): void {
+    // 组件销毁时要取消订阅，不然会引起内存泄漏
+    this.sub.unsubscribe();
   }
 }

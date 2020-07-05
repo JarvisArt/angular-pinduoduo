@@ -1,5 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Observable } from 'rxjs';
 import { TopMenu, ImageSliderComponent } from '../../../shared/components'
 import { HomeService } from './../../services/home.service';
 
@@ -14,7 +15,7 @@ export class HomeContainerComponent implements OnInit {
 
   @ViewChild(ImageSliderComponent) imgSlider: ImageSliderComponent
   scrollabTabBgColor = 'red';
-  topMenus: TopMenu[] = [];
+  topMenus$: Observable<TopMenu[]>;
 
   handleTabSelected(topMenu: TopMenu) {
     this.router.navigate(['home', topMenu.link]);
@@ -25,8 +26,6 @@ export class HomeContainerComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.service.getTabs().subscribe(tabs => {
-      this.topMenus = tabs
-    });
+    this.topMenus$ = this.service.getTabs();
   }
 }
