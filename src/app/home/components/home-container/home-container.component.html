@@ -3,9 +3,12 @@
   [backgroundColor]="'#fff'"
   [indicatorColor]="'red'"
   [titleColor]="'#3f3f3f'"
-  [titleActiveColor]="'red'"
+  [titleActiveColor]="'#000'"
   indicatorColor="yellow"
+  [selectedTabLink]="selectedTabLink$ | async"
   (tabSelected)="handleTabSelected($event)"
 >
 </app-scrollab-tab>
-<router-outlet></router-outlet>
+<div class="main">
+  <router-outlet></router-outlet>
+</div>

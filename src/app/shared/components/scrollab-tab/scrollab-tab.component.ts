@@ -14,7 +14,6 @@ export interface TopMenu {
 })
 export class ScrollabTabComponent implements OnInit {
 
-  selectIndex = -1;
   @Input() selectedTabLink: string;
   @Input() menus: TopMenu[] = [];
   @Input() backgroundColor = '#fff';
@@ -31,7 +30,6 @@ export class ScrollabTabComponent implements OnInit {
   }
 
   handleSelection(index: number) {
-    this.selectIndex = index;
-    this.tabSelected.emit(this.menus[this.selectIndex]);
+    this.tabSelected.emit(this.menus[index]);
   }
 }

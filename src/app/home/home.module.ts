@@ -5,10 +5,6 @@ import { SharedModule } from '../shared/shared.module';
 import {
   HomeContainerComponent,
   HomeDetailComponent,
-  HomeGrandComponent,
-  HomeAuxComponent,
-  ParentComponent,
-  ChildComponent
 } from './components';
 import { HomeService } from './services/home.service';
 
@@ -16,10 +12,6 @@ import { HomeService } from './services/home.service';
   declarations: [
     HomeContainerComponent,
     HomeDetailComponent,
-    HomeGrandComponent,
-    HomeAuxComponent,
-    ParentComponent,
-    ChildComponent
   ],
   providers: [
     HomeService

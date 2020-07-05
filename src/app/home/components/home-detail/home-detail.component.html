@@ -1,17 +1,22 @@
-<div *ngIf="(selectedTabLink$ | async) === 'hot' else other">
-  <app-image-slider [sliders]="imageSliders$ | async"></app-image-slider>
-  <app-horizontal-grid>
-    <span appGridItem *ngFor="let item of channels$ | async">
-      <img [src]="item.icon" alt="" [appGridItemImage]="'2rem'" [fitMode]="'cover'" />
-      <span appGridItemTitle="0.6rem">{{item.title}}</span>
-    </span>
-  </app-horizontal-grid>
+<ng-container *ngIf="(selectedTabLink$ | async) as tab">
+  <ng-container *ngIf="tab === 'hot'">
+    <app-image-slider [sliders]="imageSliders$ | async"></app-image-slider>
+    <app-horizontal-grid>
+      <span appGridItem *ngFor="let item of channels$ | async">
+        <img [src]="item.icon" alt="" [appGridItemImage]="'2rem'" [fitMode]="'cover'" />
+        <span appGridItemTitle="0.6rem">{{item.title}}</span>
+      </span>
+    </app-horizontal-grid>
+  </ng-container>
+</ng-container>
+<div class="ad-container" *ngIf="ad$ | async as ad">
+  <img [src]="ad.imageUrl" alt="" class="ad-image">
 </div>
-<ng-template #other>
-  Other works
-</ng-template>
-<!-- <a [routerLink]="['grand']">Link to grand</a> -->
-<a [routerLink]="['grand']" routerLinkActive="active" [queryParams]="{name: 'Jack', id: '007'}">Link to grand</a>
-<a [routerLink]="[{outlets: {second: ['aux']}}]">Link to second</a>
-<router-outlet></router-outlet>
-<router-outlet name="second"></router-outlet>
+<app-vertical-grid itemWidth="20rem" itemHeight="10rem">
+  <app-product-card
+    *ngFor="let product of products$ | async"
+    [product]="product"
+    [routerLink]="['/product', product.id]"
+  >
+  </app-product-card>
+</app-vertical-grid>
