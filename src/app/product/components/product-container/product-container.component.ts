@@ -1,5 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, ChangeDetectionStrategy, EventEmitter } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { OrderService } from './../../service';
 import { Observable } from 'rxjs';
 import { ProductVariant } from './../../domain/index';
@@ -19,6 +19,7 @@ export class ProductContainerComponent implements OnInit {
   selectedIndex = 0;
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private service: OrderService,
     private dialogService: DialogService
@@ -40,9 +41,29 @@ export class ProductContainerComponent implements OnInit {
 
   handleGroupBuy(variants: ProductVariant[]) {
     const top = 40;
+
+    const formSubmitted = new EventEmitter();
+    formSubmitted.subscribe(ev => {
+      console.log(ev);
+      this.dialogService.saveData(ev);
+      this.router.navigate(['/orders/confirm']);
+    })
+
+    const selected = new EventEmitter();
+    selected.subscribe(ev => {
+      console.log(ev);
+      this.selectedIndex = ev;
+    })
+
     this.dialogService.open(ProductVariantDialogComponent, {
-      inputs: {},
-      outputs: {},
+      inputs: {
+        variants,
+        selectedVariantIndex: this.selectedIndex
+      },
+      outputs: {
+        formSubmitted,
+        selected
+      },
       position: {
         top: `${top}%`,
         left: '0',

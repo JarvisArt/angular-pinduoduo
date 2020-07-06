@@ -55,7 +55,7 @@ export class DomService {
       }
     }
     for (const key in outputs) {
-      if (inputs.hasOwnProperty(key)) {
+      if (outputs.hasOwnProperty(key)) {
         const element = outputs[key];
         componentRef.instance[key] = element;
       }

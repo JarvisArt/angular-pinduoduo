@@ -5,14 +5,21 @@ import {
   ProductContainerComponent,
   GroupItemComponent,
   GroupShortListComponent,
+  ProductVariantDialogComponent,
+  ProductAmountComponent,
+  ConfirmOrderComponent,
+  PaymentComponent
 } from './components';
-import { ProductVariantDialogComponent } from './components/product-variant-dialog/product-variant-dialog.component';
 
 @NgModule({
   declarations: [
     ProductContainerComponent,
     GroupItemComponent,
-    GroupShortListComponent
+    GroupShortListComponent,
+    ProductVariantDialogComponent,
+    ProductAmountComponent,
+    ConfirmOrderComponent,
+    PaymentComponent
   ],
   imports: [
     SharedModule,
