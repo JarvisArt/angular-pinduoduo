@@ -5,7 +5,7 @@ import { RecommendContainerComponent } from './components';
 
 const routes: Routes = [
   {
-    path: 'recommend',
+    path: '',
     component: RecommendContainerComponent
   }
 ];
